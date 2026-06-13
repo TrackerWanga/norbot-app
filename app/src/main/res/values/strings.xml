@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Norbot</string>
+    <string name="app_subtitle">AI-Powered Toolbox</string>
+    <string name="developer_name">Tracker Wanga</string>
+    <string name="developer_country">Kenya 🇰🇪</string>
+    <string name="whatsapp_1">+254 758 476 795</string>
+    <string name="whatsapp_2">+254 769 502 217</string>
+</resources>
