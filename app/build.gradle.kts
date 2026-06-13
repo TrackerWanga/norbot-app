@@ -62,7 +62,8 @@ dependencies {
     implementation("com.squareup.okhttp3:okhttp:4.12.0")
     implementation("com.squareup.okhttp3:logging-interceptor:4.12.0")
     
-    implementation(platform("com.google.firebase:firebase-bom:32.7.0"))
+    // Use newer Firebase BoM compatible with Gradle 9.x
+    implementation(platform("com.google.firebase:firebase-bom:33.0.0"))
     implementation("com.google.firebase:firebase-analytics")
     
     implementation("io.coil-kt:coil-compose:2.5.0")
