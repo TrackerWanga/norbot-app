@@ -9,6 +9,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
 import androidx.navigation.compose.*
@@ -24,15 +25,8 @@ sealed class Screen(val route: String, val title: String, val icon: ImageVector,
     object More : Screen("more", "More", Icons.Outlined.MoreHoriz, Icons.Filled.MoreHoriz)
 }
 
-val bottomNavItems = listOf(
-    Screen.Home,
-    Screen.AIChat,
-    Screen.Downloads,
-    Screen.News,
-    Screen.More
-)
+val bottomNavItems = listOf(Screen.Home, Screen.AIChat, Screen.Downloads, Screen.News, Screen.More)
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun NorbotNavHost() {
     val navController = rememberNavController()
@@ -49,12 +43,7 @@ fun NorbotNavHost() {
                     bottomNavItems.forEach { screen ->
                         val selected = currentRoute == screen.route
                         NavigationBarItem(
-                            icon = {
-                                Icon(
-                                    if (selected) screen.selectedIcon else screen.icon,
-                                    contentDescription = screen.title
-                                )
-                            },
+                            icon = { Icon(if (selected) screen.selectedIcon else screen.icon, contentDescription = screen.title) },
                             label = { Text(screen.title) },
                             selected = selected,
                             onClick = {
@@ -79,22 +68,15 @@ fun NorbotNavHost() {
             }
         }
     ) { innerPadding ->
-        NavHost(
-            navController = navController,
-            startDestination = Screen.Home.route,
-            modifier = Modifier.padding(innerPadding)
-        ) {
+        NavHost(navController = navController, startDestination = Screen.Home.route, modifier = Modifier.padding(innerPadding)) {
             composable(Screen.Home.route) { HomeScreen(navController) }
             composable(Screen.AIChat.route) { AIChatScreen(navController) }
             composable(Screen.Downloads.route) { DownloadScreen(navController) }
             composable(Screen.News.route) { NewsScreen(navController) }
             composable(Screen.Tools.route) { ToolsScreen(navController) }
             composable(Screen.More.route) { MoreScreen(navController) }
-            
-            // Detail screens
             composable("ai_model/{model}") { backStackEntry ->
-                val model = backStackEntry.arguments?.getString("model") ?: "gpt"
-                AIModelScreen(navController, model)
+                AIModelScreen(navController, backStackEntry.arguments?.getString("model") ?: "gpt")
             }
             composable("youtube_downloader") { YouTubeDownloadScreen(navController) }
             composable("tiktok_downloader") { TikTokDownloadScreen(navController) }

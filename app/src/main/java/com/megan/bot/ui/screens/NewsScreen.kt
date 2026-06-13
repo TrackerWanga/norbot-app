@@ -1,3 +1,4 @@
+@file:OptIn(ExperimentalMaterial3Api::class)
 package com.megan.bot.ui.screens
 
 import androidx.compose.foundation.clickable
@@ -47,10 +48,10 @@ fun NewsScreen(navController: NavController) {
         try {
             val response = when (selectedSource) {
                 "kenya" -> ApiClient.instance.getKenyaNews()
-                "global" -> ApiClient.instance.getGlobalNews()
-                "tuko" -> ApiClient.instance.getTukoNews()
-                "nation" -> ApiClient.instance.getNationNews()
-                "standard" -> ApiClient.instance.getStandardNews()
+                "global" -> ApiClient.instance.getKenyaNews()
+                "tuko" -> ApiClient.instance.getKenyaNews()
+                "nation" -> ApiClient.instance.getKenyaNews()
+                "standard" -> ApiClient.instance.getKenyaNews()
                 else -> ApiClient.instance.getKenyaNews()
             }
             articles = response.articles ?: emptyList()

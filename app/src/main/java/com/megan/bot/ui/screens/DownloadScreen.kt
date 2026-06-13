@@ -1,3 +1,6 @@
+import kotlinx.coroutines.launch
+import com.megan.bot.data.api.ApiClient
+@file:OptIn(ExperimentalMaterial3Api::class)
 package com.megan.bot.ui.screens
 
 import androidx.compose.foundation.clickable
@@ -27,7 +30,7 @@ data class DownloadOption(
 )
 
 val downloadOptions = listOf(
-    DownloadOption(Icons.Filled.YouTube, "YouTube Downloader", "Download videos & audio", "youtube_downloader", NorbotCyan),
+    DownloadOption(Icons.Filled.PlayArrow, "YouTube Downloader", "Download videos & audio", "youtube_downloader", NorbotCyan),
     DownloadOption(Icons.Filled.MusicNote, "TikTok Downloader", "No watermark videos", "tiktok_downloader", NorbotNeonGreen),
     DownloadOption(Icons.Filled.Camera, "Instagram Downloader", "Reels, posts, stories", "instagram_downloader", NorbotWarning),
     DownloadOption(Icons.Filled.Facebook, "Facebook Downloader", "Videos & reels", "facebook_downloader", NorbotPurple)

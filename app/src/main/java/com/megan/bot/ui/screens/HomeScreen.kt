@@ -1,3 +1,4 @@
+@file:OptIn(ExperimentalMaterial3Api::class)
 package com.megan.bot.ui.screens
 
 import androidx.compose.foundation.background
@@ -122,7 +123,7 @@ data class QuickAction(val icon: ImageVector, val label: String, val route: Stri
 
 val quickActions = listOf(
     QuickAction(Icons.Filled.Chat, "AI Chat", "ai_chat", NorbotPurple),
-    QuickAction(Icons.Filled.YouTube, "YouTube", "youtube", NorbotCyan),
+    QuickAction(Icons.Filled.PlayArrow, "YouTube", "youtube", NorbotCyan),
     QuickAction(Icons.Filled.MusicNote, "TikTok", "tiktok", NorbotNeonGreen),
     QuickAction(Icons.Filled.Camera, "Instagram", "instagram", NorbotWarning),
     QuickAction(Icons.Filled.Newspaper, "News", "news", NorbotSuccess),
