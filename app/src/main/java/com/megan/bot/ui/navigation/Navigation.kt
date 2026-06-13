@@ -1,3 +1,4 @@
+import com.megan.bot.ui.screens.OfflinePlayerScreen
 package com.megan.bot.ui.navigation
 
 import androidx.compose.animation.*
@@ -89,6 +90,7 @@ fun NorbotNavHost() {
             composable("security") { SecurityScreen(navController) }
             composable("about") { AboutScreen(navController) }
             composable("contact") { ContactScreen(navController) }
+            composable("offline_player") { OfflinePlayerScreen(navController) }
         }
     }
 }
