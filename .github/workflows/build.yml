@@ -26,34 +26,15 @@ jobs:
       with:
         packages: 'platforms;android-34 build-tools;34.0.0 platform-tools'
 
-    - name: Cache Gradle
-      uses: actions/cache@v4
-      with:
-        path: |
-          ~/.gradle/caches
-          ~/.gradle/wrapper
-        key: gradle-${{ runner.os }}-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
-        restore-keys: gradle-${{ runner.os }}-
-
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
 
     - name: Build Debug APK
-      run: ./gradlew assembleDebug --stacktrace
+      run: ./gradlew assembleDebug --stacktrace --no-daemon
 
     - name: Upload APK
       uses: actions/upload-artifact@v4
       with:
-        name: Norbot-${{ github.sha }}
+        name: Norbot-Debug
         path: app/build/outputs/apk/debug/app-debug.apk
-        retention-days: 30
-
-    - name: Build Release APK
-      run: ./gradlew assembleRelease --stacktrace
-
-    - name: Upload Release APK
-      uses: actions/upload-artifact@v4
-      with:
-        name: Norbot-Release-${{ github.sha }}
-        path: app/build/outputs/apk/release/app-release-unsigned.apk
         retention-days: 30
