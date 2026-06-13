@@ -41,7 +41,6 @@ android {
 }
 
 dependencies {
-    // Compose BOM - Match Megan Music
     val composeBom = platform("androidx.compose:compose-bom:2024.02.00")
     implementation(composeBom)
     implementation("androidx.compose.ui:ui")
@@ -51,33 +50,20 @@ dependencies {
     implementation("androidx.compose.material:material-icons-extended")
     implementation("androidx.compose.animation:animation")
     
-    // Core - Match Megan Music
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.7.0")
     implementation("androidx.activity:activity-compose:1.8.2")
     implementation("androidx.navigation:navigation-compose:2.7.6")
     
-    // Coroutines - Match Megan Music
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
     
-    // Networking - Match Megan Music
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
     implementation("com.squareup.okhttp3:okhttp:4.12.0")
     implementation("com.squareup.okhttp3:logging-interceptor:4.12.0")
     
-    // Firebase - Match Megan Music BoM
     implementation(platform("com.google.firebase:firebase-bom:32.7.0"))
     implementation("com.google.firebase:firebase-analytics")
     
-    // Image loading - Match Megan Music
     implementation("io.coil-kt:coil-compose:2.5.0")
-}
-
-// Force specific versions to avoid conflicts
-configurations.all {
-    resolutionStrategy {
-        force("org.jetbrains.kotlin:kotlin-stdlib:1.9.22")
-        force("org.jetbrains.kotlin:kotlin-stdlib-common:1.9.22")
-    }
 }
